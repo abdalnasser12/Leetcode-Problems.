@@ -1,18 +1,27 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class Solution : MonoBehaviour
+public class Solution
 {
-    // Start is called before the first frame update
-    void Start()
+    public int[] TwoSum(int[] nums, int target)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int complement = target - nums[i];
+
+            if (map.ContainsKey(complement))
+            {
+                return new int[] { map[complement], i };
+            }
+
+            map[nums[i]] = i;
+        }
+
+
+        throw new ArgumentException("No two sum solution");
     }
 }
+
